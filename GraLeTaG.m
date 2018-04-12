@@ -1,19 +1,4 @@
-
-%
-%
-% cfg.amode.cue_font
-% cfg.amode.cue_font_size
-%
-% cfg.cuepictures
-%
-% cfg.Markers for cue  (e.g. in present_cue)
-%
-%
-% TODO unfinished
-% present_cue
-
-
-function GraLeTaG_v098()
+function GraLeTaG()
 
 % This program is distributed in the hope that it will be useful,
 % but WITHOUT ANY WARRANTY;
@@ -28,11 +13,16 @@ function GraLeTaG_v098()
 GraLe_ver=0.98;
 
 BackgroundColor=[ 0 0 0];
-NameColor=[1 .2 0];
+% NameColor=[1 .2 0];
+NameColor=[.4 .8 1];
 FontColor=[1 1 1];
 SmallFontColor=[.55 .55 .55];
+ButtonFontSize = 12;
+ButtonBackgroundColor=[ .15 .15 .15];
+ButtonForegroundColor=[.4 .8 1];
+            
 
-logo=imread('GraLe_Logo.png');
+logo=imread('GraLeTaG_Logo.png');
 logoy=size(logo,1);
 
 cfg.figure_pos=calculate_figure_pos;
@@ -108,8 +98,10 @@ uicontrol('Style','text', ...
 uicontrol('Style', 'pushbutton', ...
     'String', 'Generate Gradient Learning Task', ...
     'Units', 'pixels',...
-    'BackgroundColor',BackgroundColor,...
-    'ForegroundColor',FontColor,...
+    'FontSize',ButtonFontSize,...
+    'FontWeight','bold',...
+    'BackgroundColor',ButtonBackgroundColor,...
+    'ForegroundColor',ButtonForegroundColor,...
     'Position', [10,140,380,80],...
     'Callback',@generate_task);
 
@@ -117,8 +109,10 @@ uicontrol('Style', 'pushbutton', ...
 uicontrol('Style', 'pushbutton', ...
     'String', 'Run Gradient Learning Task', ...
     'Units', 'pixels',...
-    'BackgroundColor',BackgroundColor,...
-    'ForegroundColor',FontColor,...
+    'FontSize',ButtonFontSize,...
+    'FontWeight','bold',...
+    'BackgroundColor',ButtonBackgroundColor,...
+    'ForegroundColor',ButtonForegroundColor,...
     'Position', [10,50,380,80],...
     'Callback',@start_task);
 
@@ -3037,7 +3031,7 @@ uicontrol('Style','text', ...
         % build filename
         filename = [PathName, FileName];
         % load data
-        load(filename); %#ok<LOAD>
+        load(filename); 
         % create cfg structure from loaded file
         cfg = experiment_parameters;
         %         cfg.expname = expnam{1};
@@ -3199,6 +3193,9 @@ uicontrol('Style','text', ...
         %
         %
         fprintf(FID,'RuleNr\tRuletype\tTrialNr\tTime\tCond\tButtonNr\tACC\tRT(ms)\tRollACC\tCrit\ttilt\tfreq\tITI');
+        if strcmp(experiment_parameters.attentionmode,'yes')
+            fprintf(FID,['\tCue\tISI\ttilt2\tfreq2']);
+        end
         if strcmp(cfg.Feedback, 'yes')
             fprintf(FID,'\tISI');
         end
@@ -3469,7 +3466,7 @@ uicontrol('Style','text', ...
                     tic
                     % present cue screen
                     present_cue()
-                    % calculate number fo frames for isi
+                    % calculate number of frames for cue
                     cuepres = round(cfg.subject{cfg.subjectid}.cueSTIMtime{rule}(trial)/1000 /cfg.frameDuration)*cfg.frameDuration - cfg.frameDuration;
                     % wait until time for isi is over
                     while toc<cuepres
@@ -3479,7 +3476,7 @@ uicontrol('Style','text', ...
                     tic
                     % present isi screen
                     present_cue_isi()
-                    % calculate number fo frames for isi
+                    % calculate number of frames for isi
                     cueisi = round(cfg.subject{cfg.subjectid}.cueISI{rule}(trial)/1000 /cfg.frameDuration)*cfg.frameDuration - cfg.frameDuration;
                     % wait until time for isi is over
                     while toc<cueisi
@@ -3504,7 +3501,7 @@ uicontrol('Style','text', ...
                     elseif strcmp(cfg.amode.img2type,'random')
                         cfg.img2 = cfg.stimuli{cfg.subject{cfg.subjectid}.stim2order{rule}.freqindex(trial),cfg.subject{cfg.subjectid}.stimorder{rule}.tiltindex(trial)};
                     else
-                        cfg.img2 = flipdim(cfg.img1,2);
+                        cfg.img2 = flipdim(cfg.img1,2); %#ok<DFLIPDIM>
                     end
                         
 %                     cfg.img2 = cfg.stimuli2{cfg.subject{cfg.subjectid}.stimorder{rule}.freqindex(trial),cfg.subject{cfg.subjectid}.stimorder{rule}.tiltindex(trial)};
@@ -3521,6 +3518,7 @@ uicontrol('Style','text', ...
                 tic
                 bs = 0;
                 rtime = nan;
+                bpout = nan;
                 while bs == 0
                     
                     
@@ -3712,9 +3710,18 @@ uicontrol('Style','text', ...
                     num2str(cfg.subject{cfg.subjectid}.stimorder{rule}.freqvalue(trial)),'\t',...
                     num2str(iti*1000)]);
                 
+                if strcmp(experiment_parameters.attentionmode,'yes')
+                    fprintf(FID,['\t',...
+                        num2str(cfg.subject{cfg.subjectid}.cueorder{rule}(trial)),'\t',...
+                        num2str(cueisi*1000),'\t',...
+                        num2str(cfg.subject{cfg.subjectid}.stim2order{rule}.tiltvalue(trial)),'\t',...
+                        num2str(cfg.subject{cfg.subjectid}.stim2order{rule}.freqvalue(trial))]);
+                end
+                
                 if strcmp(cfg.Feedback, 'yes')
                     fprintf(FID,['\t',num2str(isi*1000)]);
                 end
+                
                 
                 fprintf(FID,'\r\n');
                 
