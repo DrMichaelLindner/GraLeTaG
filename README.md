@@ -17,7 +17,7 @@ Copy the GraLeTag folder in a folder of your choice on your system and add the d
 
 
 ## *Licence*  
-GraLeTaG by Michael Lindner is licensed under CC BY 4.0
+GraLeTaG by Michael Lindner is licensed under CC BY 4.0.
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
   
   
