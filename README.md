@@ -1,5 +1,5 @@
 
-# ![Alt text](GraLeTaG_logo.png?raw=true "Title")
+# ![Alt text](GraLeTaG_Logo.png?raw=true "Title")
 
 #   GraLeTaG
 Gradient Learning Task Generator
@@ -28,4 +28,4 @@ Author:
 Michael Lindner  
 University of Reading, 2018  
 School of Psychology and Clinical Language Sciences  
-Contact: ![contact email](contact.png?raw=true "contact email")
+Contact: ![contact email](contact.jpg?raw=true "contact email")
