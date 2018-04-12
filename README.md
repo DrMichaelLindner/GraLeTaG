@@ -21,7 +21,7 @@ GraLeTaG by Michael Lindner is licensed under CC BY 4.0
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
   
   
-Author:  
+## *Author*
 Michael Lindner  
 University of Reading, 2018  
 School of Psychology and Clinical Language Sciences  
