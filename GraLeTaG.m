@@ -10,7 +10,7 @@ function GraLeTaG()
 %
 
 
-GraLe_ver=0.98;
+GraLe_ver=0.981;
 
 BackgroundColor=[ 0 0 0];
 % NameColor=[1 .2 0];
@@ -2528,11 +2528,11 @@ uicontrol('Style','text', ...
                             bcount = bcount + (experiment_parameters.mixtype-pst);
                             
                         end
-                        [tilt,fre]=ind2sub(size(experiment_parameters.rules{ii}),AB);
+                        [tilt,fre]=ind2sub(size(experiment_parameters.rules{experiment_parameters.rule_order{ii,1}}),AB);
                         experiment_parameters.subject{subj,1}.stimorder{ii,1}.tiltindex=tilt;
                         experiment_parameters.subject{subj,1}.stimorder{ii,1}.freqindex=fre;
-                        experiment_parameters.subject{subj,1}.stimorder{ii,1}.tiltvalue=experiment_parameters.thetas(tilt);
-                        experiment_parameters.subject{subj,1}.stimorder{ii,1}.freqvalue=experiment_parameters.lamdas(fre);
+                        experiment_parameters.subject{subj,1}.stimorder{ii,1}.tiltvalues=experiment_parameters.thetas(tilt);
+                        experiment_parameters.subject{subj,1}.stimorder{ii,1}.freqvalues=experiment_parameters.lamdas(fre);
                         experiment_parameters.subject{subj,1}.condorder{ii,1}=cAB;
                         %                         catch
                         %                             % full mix
@@ -2607,7 +2607,7 @@ uicontrol('Style','text', ...
                         acount = acount + pst;
                         bcount = bcount + (20-pst);
                     end
-                    [tilt,fre]=ind2sub(size(experiment_parameters.rules{ii}),AB);
+                    [tilt,fre]=ind2sub(size(experiment_parameters.rules{experiment_parameters.rule_order{ii,1}}),AB);
                     stimorder{ii,1}.tiltindex=tilt;
                     stimorder{ii,1}.freqindex=fre;
                     stimorder{ii,1}.tiltvalues=experiment_parameters.thetas(tilt);
@@ -2649,7 +2649,7 @@ uicontrol('Style','text', ...
                                 end
                                 X = X(1:experiment_parameters.rule_order{ii,3});
         
-                                [tilt,fre]=ind2sub(size(experiment_parameters.rules{ii}),X);
+                                [tilt,fre]=ind2sub(size(experiment_parameters.rules{experiment_parameters.rule_order{ii,1}}),X);
                                 stim2order{ii,1}.tiltindex=tilt;
                                 stim2order{ii,1}.freqindex=fre;
                                 stim2order{ii,1}.tiltvalues=experiment_parameters.thetas(tilt);
@@ -2670,7 +2670,7 @@ uicontrol('Style','text', ...
                             end
                             X = X(1:experiment_parameters.rule_order{ii,3});
         
-                            [tilt,fre]=ind2sub(size(experiment_parameters.rules{ii}),X);
+                            [tilt,fre]=ind2sub(size(experiment_parameters.rules{experiment_parameters.rule_order{ii,1}}),X);
                             stim2order{ii,1}.tiltindex=tilt;
                             stim2order{ii,1}.freqindex=fre;
                             stim2order{ii,1}.tiltvalues=experiment_parameters.thetas(tilt);
@@ -2693,7 +2693,7 @@ uicontrol('Style','text', ...
                                 X = x(idxa);
                                 X = X(1:experiment_parameters.rule_order{ii,3});
         
-                                [fre,tilt]=ind2sub(size(experiment_parameters.rules{ii}),X);
+                                [fre,tilt]=ind2sub(size(experiment_parameters.rules{experiment_parameters.rule_order{ii,1}}),X);
                                 stim2order{ii,1}.tiltindex=tilt;
                                 stim2order{ii,1}.freqindex=fre;
                                 stim2order{ii,1}.tiltvalues=experiment_parameters.thetas(tilt);
@@ -2709,7 +2709,7 @@ uicontrol('Style','text', ...
                             [~,idxa]=sort(rand(length(x),1));
                             X = x(idxa);
                             X = X(1:experiment_parameters.rule_order{ii,3});
-                            [fre,tilt]=ind2sub(size(experiment_parameters.rules{ii}),X);
+                            [fre,tilt]=ind2sub(size(experiment_parameters.rules{experiment_parameters.rule_order{ii,1}}),X);
                             stim2order{ii,1}.tiltindex=tilt;
                             stim2order{ii,1}.freqindex=fre;
                             stim2order{ii,1}.tiltvalues=experiment_parameters.thetas(tilt);
@@ -3706,16 +3706,16 @@ uicontrol('Style','text', ...
                     num2str(rtime*1000),'\t',...
                     num2str(rolavg),'\t',...
                     num2str(crit),'\t',...
-                    num2str(cfg.subject{cfg.subjectid}.stimorder{rule}.tiltvalue(trial)),'\t',...
-                    num2str(cfg.subject{cfg.subjectid}.stimorder{rule}.freqvalue(trial)),'\t',...
+                    num2str(cfg.subject{cfg.subjectid}.stimorder{rule}.tiltvalues(trial)),'\t',...
+                    num2str(cfg.subject{cfg.subjectid}.stimorder{rule}.freqvalues(trial)),'\t',...
                     num2str(iti*1000)]);
                 
                 if strcmp(experiment_parameters.attentionmode,'yes')
                     fprintf(FID,['\t',...
                         num2str(cfg.subject{cfg.subjectid}.cueorder{rule}(trial)),'\t',...
                         num2str(cueisi*1000),'\t',...
-                        num2str(cfg.subject{cfg.subjectid}.stim2order{rule}.tiltvalue(trial)),'\t',...
-                        num2str(cfg.subject{cfg.subjectid}.stim2order{rule}.freqvalue(trial))]);
+                        num2str(cfg.subject{cfg.subjectid}.stim2order{rule}.tiltvalues(trial)),'\t',...
+                        num2str(cfg.subject{cfg.subjectid}.stim2order{rule}.freqvalues(trial))]);
                 end
                 
                 if strcmp(cfg.Feedback, 'yes')
