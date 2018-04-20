@@ -1,0 +1,711 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>GraLeTaG_Manual</title></head><body>
+<p><br style="font-family: Arial;">
+</p>
+
+<div style="text-align: center; font-family: Arial;">
+<p><a class="mozTocH1" name="top"></a><big><big style="font-weight: bold;"><big><big><big>GraLeTaG</big></big></big></big></big></p>
+<p><big><big>&nbsp; Gradient Learning Task Generator</big></big></p>
+
+</div>
+
+
+<p style="font-family: Arial;"><br>
+</p>
+
+<div style="text-align: center; font-family: Arial;">
+<p><big style="font-weight: bold;"><big>version 0.982</big></big></p>
+
+</div>
+
+<p style="font-family: Arial;"><br>
+</p>
+
+<div style="text-align: center; font-weight: bold; font-family: Arial;">
+<p><big><big><big><big>User Manual<br>
+</big></big></big></big></p>
+</div>
+
+
+
+  
+
+<p style="font-family: Arial;"><br>
+</p>
+
+<p style="font-family: Arial;"><big style="font-weight: bold;"><big>Table of contents</big></big></p>
+<ul style="font-family: Arial;" id="mozToc">
+<!--mozToc h1 1 h2 2 h3 3 h4 4 h5 5 h6 6--><li><big><a href="#mozTocId348667">1. About GraLeTag</a></big></li><li><big><a href="#mozTocId832343">2.
+Software Dependencies</a></big></li><li><big><a href="#mozTocId348015">3.
+Installation</a></big></li><li><big><a href="#mozTocId137272">4.
+License</a></big></li><li><big><a href="#mozTocId415131">5. GraLeTag</a></big></li><li><big><a href="#mozTocId643938">6. Generate Gradient Learing Task</a></big><ul><li><big><a href="#mozTocId66595">6.1 Input options of the Gradient Learning Task Generator</a></big></li><li><big><a href="#mozTocId810608">6.2
+Output files</a></big></li></ul></li><li><big><a href="#mozTocId780245">7. Run Gradient Learning Task</a></big><ul><li><big><a href="#mozTocId519345">7.1 Input
+parameters</a></big></li><li><big><a href="#mozTocId569504">7.2
+Task description</a></big></li><li><big><a href="#mozTocId252729">7.3 Output files</a></big></li></ul></li>
+</ul>
+<p style="font-family: Arial;"><br>
+</p>
+<p style="font-family: Arial;"><big style="font-weight: bold;"><big><br>
+</big></big></p>
+<h1><a class="mozTocH1" name="mozTocId348667"></a><small><a class="mozTocH1" name="mozTocId370232"></a><span style="font-family: Arial;">1. About GraLeTag</span></small></h1>
+<p style="font-family: Arial;">GraLeTag is a GUI based tool easily generate and run gradient learning task experiments.</p>
+
+<p style="font-family: Arial;"><br>
+<span style="color: red;">xxxx</span><span style="color: red;">xxxx</span><span style="color: red;">xxxx</span><span style="color: red;">xxxx</span></p>
+<p style="font-family: Arial;">For help and support feel free to contact: graletag@gmx.co.uk</p>
+
+<p style="font-family: Arial;"><br>
+GraLeTaG by Michael Lindner is licensed under CC BY 4.0</p>
+
+
+<p style="font-family: Arial;"><br>
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;</p>
+
+
+<p style="font-family: Arial;"><br>
+Michael Lindner, 2018</p>
+
+
+<p style="font-family: Arial;"><br>
+</p>
+
+<h1><a class="mozTocH1" name="mozTocId832343"></a><a name="head2"></a><small><span style="font-family: Arial;">2.
+Software Dependencies</span></small></h1>
+
+<ul style="font-family: Arial;">
+<li><p style="margin-bottom: 0cm; line-height: 150%;"><font color="#000000"><font size="3">Matlab
+	2015a or newer (</font></font><a href="http://www.mathworks.com/">www.mathworks.com</a><font color="#000000"><font size="3">)</font></font></p>
+	</li><li><p style="margin-bottom: 0cm; line-height: 150%;"><font color="#000000"><font size="3">Psychtoolbox
+	3 </font></font><a href="http://psychtoolbox.org/download/">http://psychtoolbox.org/download/</a></p></li>
+</ul>
+<br>
+<h1><a class="mozTocH1" name="mozTocId348015"></a><a name="head3"></a><small style="font-family: Arial;">3.
+Installation</small></h1>
+
+<ul style="font-family: Arial;">
+<li><p style="margin-bottom: 0cm; line-height: 150%;"><font color="#000000"><font size="3">Copy
+	the file onto a folder on your hard drive. e.g. </font></font>C:\SimonGrataGen</p>
+	</li><li><p style="margin-bottom: 0cm; line-height: 150%;"><font color="#000000"><font size="3">Add
+	path to the files using &#8222;Set Path&#8220; button or &#8222;addpath&#8220;
+	function. e.g. addpath('<a href="file:///C:/SimonGrataGen">C:\SimonGrataGen</a>')</font></font></p>
+</li>
+</ul>
+
+
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;"><br>
+</p>
+
+<h1 style="font-family: Arial;"><a class="mozTocH1" name="mozTocId137272"></a><small><font color="#000000"><a name="head4"></a>4.
+License</font></small></h1>
+
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;">GraLeTag<font color="#000000"><font size="3"> is licensed under a creative commons
+Attribution-NonCommercial-NoDerivative 4.0 international license (</font></font><strong><font color="#000000"><font size="3">CC
+BY-NC-ND 4.0: </font></font></strong><strong><a href="https://creativecommons.org/licenses/by-nc-nd/2.0/uk/"><font color="#000000">https://creativecommons.org/licenses/by-nc-nd/4.0</font></a></strong><strong><font color="#000000"><font size="3"><span style="font-weight: normal;">/)</span></font></font></strong></p>
+
+<p style="font-family: Arial;"><br>
+</p>
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;"><img src="file:///C:/Users/user/AppData/Local/Temp/moz-screenshot.jpg" alt=""></p>
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;"><br>
+</p>
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;">
+</p>
+<h1><a class="mozTocH1" name="mozTocId415131"></a><a name="head5"></a><small><span style="font-family: Arial;">5. GraLeTag</span></small></h1>
+
+<p style="font-family: Arial;"><br>GraLeTag, the <span style="font-weight: bold;">Gra</span>dient <span style="font-weight: bold;">Le</span>aring <span style="font-weight: bold;">Ta</span>sk <span style="font-weight: bold;">G</span>enerator <font size="3">is a tool
+thought to easily generate and run Learning and attentionen tasks using gradient stimuli</font>
+</p>
+
+
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;"><br>
+</p>
+
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;"><font color="#000000"><font size="3"><b>First
+steps</b>:</font></font></p>
+
+<ul style="font-family: Arial;">
+<li><p style="margin-bottom: 0cm; line-height: 150%;"><font color="#000000"><font size="3">Start
+	the GraleTag.m function either by typing in <i>run </i></font></font><font style="font-style: italic;" color="#000000"><font size="3">GraleTag.m</font></font><font color="#000000"><font size="3"><i> </i><span style="font-style: normal;">in the Matlab
+	command window or open the </span></font></font><font style="font-style: italic;" color="#000000"><font size="3">GraleTag.m</font></font><font color="#000000"><font size="3"><span style="font-style: normal;"> in the Matlabs editor and press the run button in the Matlab menu bar.</span></font></font></p>
+	</li><li>
+    <p style="margin-bottom: 0cm; line-height: 150%;"><font color="#000000"><font size="3">The main menu of GraLeTag will open (see figure 1)<br>
+    <img style="width: 416px; height: 592px;" alt="main menu image" src="Manual_files/main_menu.png"></font></font><br>
+Figure 1: Main menu of GraLeTaG<br>
+    </p>
+</li>
+  <li>
+    <p style="margin-bottom: 0cm; line-height: 150%;"><font color="#000000"><font size="3">from
+	here you will have two choices (via two buttons):</font></font></p>
+  </li>
+  <ul>
+    <li>
+      <p><font color="#000000"><font size="3">Generate Gradient Leranign Task</font></font></p>
+    </li>
+    <ul>
+      <li>
+        <p><font color="#000000"><font size="3">Using
+			the Generator you can generate different types of Simon tasks. See
+			detailed description in <a href="#head6">section 6</a>.</font></font></p>
+      </li>
+    </ul>
+    <li>
+      <p><font color="#000000"><font size="3">Run Gradient Leraing Task</font></font></p>
+    </li>
+    <ul>
+      <li>
+        <p><font color="#000000"><font size="3">U</font></font><font color="#000000"><font size="3">sing
+the Experiment button you can start a predefined Experiment. See
+detailed description in <a href="#head7">section 7</a>.</font></font><br>
+        </p>
+      </li>
+    </ul>
+  </ul>
+</ul>
+<p style="font-family: Arial;"><br>
+</p>
+
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;"><font color="#000000"><font size="3"><b>Enjoy
+playing around with this tool!</b></font></font></p>
+
+<br>
+<p style="font-family: Arial;"><br>
+</p>
+<p style="font-family: Arial;"><br>
+</p>
+<h1><a class="mozTocH1" name="mozTocId643938"></a><a name="head6"></a><small><span style="font-family: Arial;">6. Generate Gradient Learing Task</span></small><br>
+</h1>
+
+
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;"><font size="3">With
+the GraLeTaG Generator you can set up different types of Gradient Learning and attention tasks with a few button presses.</font></p>
+
+<p style="margin-bottom: 0cm; line-height: 150%; color: red; font-family: Arial;"><font size="3">For
+example you can generate Learning task using different rules, variable ,</font><span style="color: red;">xxxx</span><span style="color: red;">xxxx</span><span style="color: red;">xxxx</span><span style="color: red;">xxxx</span></p>
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;"><font color="#000000"><font size="3">And many more options are available using the generation GUI.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;"><br>
+</p>
+<h2 style="font-family: Arial;"><a class="mozTocH2" name="mozTocId66595"></a><small>6.1 Input options of the Gradient Learning Task Generator</small></h2>
+<p style="font-family: Arial;">In the following, all input option of the Gradient Learning Task Generator (see figure 2) will be explained in detail.</p>
+<p style="font-family: Arial;"><br>
+</p>
+
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;"><font color="#000000"><font size="3"><img style="width: 1515px; height: 867px;" alt="generator GUI image" src="Manual_files/gen_gui.png"><br>
+</font></font></p>
+<p style="font-family: Arial;">Figure 2: Generate Learning Task Generator GUI</p>
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;"><br>
+</p>
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;"><br>
+</p>
+<p style="font-family: Arial;"><big><span style="font-weight: bold;">Stimuli</span></big></p>
+<ul style="font-family: Arial;">
+  <li>
+    <p><span style="font-weight: bold;">Size of gradient images</span>: Size n of the gradient stimuli in pixel for creating and n by n image.<span style="color: red;"></span>  </p>
+  </li>
+</ul>
+<p style="font-family: Arial;"><br>
+</p>
+<ul style="font-family: Arial;">
+  <li>
+    <p><span style="font-weight: bold;">fixation point on stumuli</span>: Present a fixation point in the center of the stimuli. <span style="font-style: italic;">Yes</span> or <span style="font-style: italic;">No</span>.
+If yes, a dialog appears to specify the size of the fixation point. The
+specified size will be displayed on the GUI (beside the fixation point
+pulldown menu of the ITI feedback).</p>
+  </li>
+</ul>
+<p style="font-family: Arial;"><br>
+</p>
+<ul style="font-family: Arial;">
+  <li>
+    <p><span style="font-weight: bold;">Min and max wavelength of the grating (in pixel) and stepwidth</span>:
+Using these three values the variation of the thickness and distance of
+the black and white bars on the stimuli can be defined.. E.g. using the
+defaults of min=5, max=25 and stepwidth=.025 produces 81 different
+"densities" of the black and wihtie bars. Below see two example images
+with wavelength of 10 and 20 and rotation of 10 degrees:</p></li></ul>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  <img style="width: 150px; height: 150px; font-family: Arial;" alt="" src="Manual_files/stim_example_gauss.bmp"><span style="font-family: Arial;"> wavelength=10</span><br style="font-family: Arial;">
+<span style="font-family: Arial;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  </span><img style="width: 150px; height: 150px; font-family: Arial;" alt="" src="Manual_files/stim_example_gauss2.bmp"><span style="font-family: Arial;"> wavelength=20</span>
+<ul style="font-family: Arial;">
+  <li>
+    <p><span style="font-weight: bold;">Min and max roation of the grating (in pixel)</span><span style="font-weight: bold;"> and stepwidth</span>: Using
+these three values the variation of the rotation of
+the stimuli can be defined.. E.g. using the
+defaults of min=5, max=25 and stepwidth=.025 produces 81
+different clockwise rotations of the black and white bars. Negative
+values will produce counterclockwise rotations. Below see two
+example images with rotation of 10 and 20 degrees and <span style="font-family: Arial;">wavelength of 10: </span><br style="font-family: Arial;">
+</p></li>
+</ul>
+<span style="font-family: Arial;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  </span><img style="width: 150px; height: 150px; font-family: Arial;" alt="" src="Manual_files/stim_example_gauss.bmp"><span style="font-family: Arial;"> rotation = 10 degrees</span><br style="font-family: Arial;">
+<span style="font-family: Arial;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  </span><img style="width: 150px; height: 150px; font-family: Arial;" alt="" src="Manual_files/stim_example_gauss3.bmp"><span style="font-family: Arial;"> rotation = 10 degrees</span>
+
+<ul style="font-family: Arial;">
+  <li>
+    <p><span style="font-weight: bold;">Phase shift</span>:
+Phase shift of the waveform peaks in the image. With this value the
+"white" bars on the gradient images can be shifted horizontally before
+rotating the images. See three example images below with three
+phaseshift values:<span style="color: red; font-family: Arial;"></span></p>
+  </li>
+</ul><span style="font-family: Arial;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><img style="width: 150px; height: 150px; font-family: Arial;" alt="" src="Manual_files/stim_example_gauss_phase0.bmp"><span style="font-family: Arial;"> Phase shift = 0</span><br style="font-family: Arial;">
+<span style="font-family: Arial;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;  </span><img style="width: 150px; height: 150px; font-family: Arial;" alt="" src="Manual_files/stim_example_gauss_phase25.bmp"><span style="font-family: Arial;"> Phase shift = 0.25</span><br style="font-family: Arial;">
+<span style="font-family: Arial;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  </span><img style="width: 150px; height: 150px; font-family: Arial;" alt="" src="Manual_files/stim_example_gauss_phase5.bmp"><span style="font-family: Arial;"> Phase shift = 0.5</span><br>
+<span style="font-family: Arial;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  </span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp; <br>
+
+
+<ul style="font-family: Arial;">
+  <li>
+    <p><span style="font-weight: bold;">Position of gratings in relation to screen center</span>:
+The postion of the stimuli in relation to the screen ceter can be
+spcified (e.g. in case you want to present them on a specific place on
+the screen). You can shift the stimuli horizontally (X) or vertically
+(Y) by using positivevalues (right) or negative values (left). <span style="color: red;"></span></p>
+  </li>
+</ul>
+<p style="font-family: Arial;"><br>
+</p>
+<ul style="font-family: Arial;">
+  <li>
+    <p><span style="font-weight: bold;">Select a mask style of the gratings</span>: The shape of the stimlu can be fedines as a full squatr<span style="color: red;"></span></p>
+  </li>
+  <ul>
+    <li>
+      <p> <span style="font-style: italic;">full</span>:&nbsp; <span style="color: red;"></span></p></li></ul></ul>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  <img style="width: 150px; height: 150px;" alt="" src="Manual_files/stim_example_full.bmp"><br>
+<ul style="font-family: Arial;">
+  <ul>
+
+    <li>
+      
+      <p><span style="font-style: italic;">gauss:&nbsp;&nbsp;&nbsp; <br>
+</span></p>
+</li>
+  </ul>
+</ul>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  <img style="width: 150px; height: 150px;" alt="" src="Manual_files/stim_example_gauss.bmp"><br>
+<ul style="font-family: Arial;">
+  <ul>
+<li>
+      <p><span style="font-style: italic;">circle</span>: <br>
+</p></li>
+  
+  </ul>
+
+</ul>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  <img style="width: 150px; height: 150px;" alt="" src="Manual_files/stim_example_circle.bmp"><br>
+
+<ul style="font-family: Arial;">
+  <li>
+    <p><span style="font-weight: bold;">Order of gratings</span>: The order of the stimuli can be have different random orders for each subject (<span style="font-style: italic;">random</span>), or one random order can be used for all subject <span style="font-style: italic;">(pseudorandom</span>).<br>
+</p></li></ul>
+
+<p style="font-family: Arial;"><br>
+<big style="font-family: Arial;"><span style="font-weight: bold;">Rules</span></big></p>
+<big style="font-family: Arial;"><small>GraLeTaG provides an easy way to create even complex rules. The rules can be defined by simple images (.bmp or .png)<br>
+<br>
+<br>
+Figure 3: Example rule image. <br>
+<br>
+<br>
+</small><span style="font-weight: bold;"></span></big>
+<ul style="font-family: Arial;">
+  <li>
+    <p><span style="font-weight: bold;">Define Rules</span>:</p>
+  </li>
+</ul>
+<p style="font-family: Arial;"><br>
+</p>
+<p style="font-family: Arial;"><big><span style="font-weight: bold;">General</span></big></p>
+<ul style="font-family: Arial;">
+  <li>
+    <p><span style="font-weight: bold;">Output folder</span>: C<font style="font-family: Arial;"><font size="3"><span style="font-weight: normal;">hose
+folder where the experiment file and the marker definition file will
+be saved.</span></font></font><span style="color: red;"></span></p>
+
+  </li>
+</ul>
+<ul style="font-family: Arial;">
+  <li>
+    <p><span style="font-weight: bold;">Name of experiment</span>: <font size="3">The parameter name
+of experiment is used as prefix for the filename for the output file
+in which all the specified parameters will be saved. It will also be
+used later when you run the experiment for the filename of the output
+file of each subject.</font></p>
+
+  </li>
+</ul>
+<ul style="font-family: Arial;">
+  <li>
+    <p><span style="font-weight: bold;">Number of subject</span>:<font size="3"> Specify the number
+of subjects that you want to run in the experiment. The generator will
+predefine the stimuli and order of trials etc. for all of the subjects.</font></p>
+
+  </li>
+</ul>
+<ul style="font-family: Arial;">
+  <li>
+    <p><span style="font-weight: bold;">
+Save stimuli in experiment file</span>:
+The created gradient stimuli can be saved in the experiment parameter
+file.
+It is not neccessary for running the experiment later on, because if
+the stimuli are not saved, they will be created on the fly when running
+the experiment.But saving the stimuli allows the user to extract the
+stimuli for inspection or later use (e.g. for a publication). </p>
+  </li>
+</ul>
+
+<p style="font-family: Arial;"><br>
+<big><span style="font-weight: bold;">Instructions</span></big></p>
+<ul style="font-family: Arial;">
+  <li>
+    <p style="margin-bottom: 0cm; line-height: 150%;"><span style="font-weight: bold;">Add instructions</span>: <font style="font-family: Arial;"><font size="3"><span style="font-weight: normal;">(<span style="font-style: italic;">Yes
+    </span>	or <span style="font-style: italic;">No</span>) Predefined images with instructions or task trials can be
+	presented before the experiment starts.</span></font></font></p>
+    <ul>
+<li>
+	<p style="margin-bottom: 0cm; font-weight: normal; line-height: 150%;">
+	<font size="3">If <span style="font-style: italic;">yes</span>:</font></p>
+	<p style="margin-bottom: 0cm; line-height: 150%;"><font color="#000000"><font size="3"><span style="font-weight: normal;">-
+	</span><b>How many instruction images consecutively?</b><span style="font-weight: normal;">
+	The number of images can be defined here.</span></font></font></p>
+	
+        <p style="margin-bottom: 0cm;"><font color="#000000"><font size="3"><span style="font-weight: normal;">-
+	</span><b>Specify buttons to end each instruction image separated by
+	semicolon.</b><span style="font-weight: normal;"> For each
+	instruction image the stop button can be defined (left or right). </span>e.g.
+		if you want to have left button or image 1, right button for image
+		2 and left button for image 3, you need to type in:
+				left;right;left. The
+number of buttons need be identical to the number of used instruction
+images.</font></font></p>
+</li>
+    </ul>
+
+
+
+  </li>
+</ul>
+<p style="font-family: Arial;"><big><span style="font-weight: bold;">Task</span></big></p>
+<ul style="font-family: Arial;">
+  <li>
+    <p><span style="font-weight: bold;">Length of initial time before the first stimuli appears</span>: Time between starting the experiment and the first.<span style="color: red;"></span></p>
+  </li>
+  <li>
+    <p style="margin-bottom: 0cm; font-weight: normal; line-height: 150%;"><span style="font-weight: bold;">Stimulus presentation time</span>: The stimuli <font size="3"><span style="font-weight: normal;">can be presented until the participant presses a button
+	(<span style="font-style: italic;">endless</span>) or for a maximum amount of time in which the participant
+	can press a button (<span style="font-style: italic;">limited</span>).</span></font></p>
+  </li>
+  <ul>
+    <li>
+      <p><font size="3"><span style="font-weight: normal;">If you choose <span style="font-style: italic;">limited</span>:</span></font>&nbsp;</p>
+    </li>
+    <ul>
+      <li>
+        <p>Specify the
+		maximum presentation time in ms</p>
+      </li>
+      <li>
+        <p><font size="3">Equal trial
+	length? (yes or no): If button was pressed before the maximum
+	presentation time, the trial will still wait until the maximum
+	presentation time is over.</font></p>
+      </li>
+    </ul>
+  </ul>
+  <li>
+    <p><span style="font-weight: bold;">ITI type</span>: Inter trial interval can be defined as a <span style="font-style: italic; font-weight: bold;">constant</span> time for all trials of all subjects or as <span style="font-weight: bold; font-style: italic;">random</span> or <span style="font-weight: bold; font-style: italic;">pseudorandom</span> timings (pseudorandom = one random order used for each subject, random = different random orders for each subject). After
+the selection a dialog box appears to specify the constant time or the
+range of the random/pseudroandom times (in ms). The specified timing
+will be displayed beside the pulldown menu<br>
+    </p>
+  </li>
+  <li>
+    <p><span style="font-weight: bold;">Fixation</span>: Present fixation point in the center of the ITI screen. <span style="font-style: italic;">Yes</span> or <span style="font-style: italic;">No</span>. If yes, and not already specified a dialog appears to specify the size of the fixation point. The
+specified size will be displayed on the GUI (beside the pulldown menu).</p>
+  </li>
+  <li>
+    <p><span style="font-weight: bold;">Length of equal condition mixing</span>: To prevent a bias of conditions in the random order this number is used to create cinsecutive random orders of this length.<span style="color: red;"></span></p>
+  </li>
+  <li>
+    <p><span style="font-weight: bold;">Buttons - Change butto<span style="color: rgb(1, 1, 1);">ns</span></span><span style="color: rgb(1, 1, 1);">: </span><span style="color: red;"><span style="color: rgb(1, 1, 1);">Using the Change button, the response buttons for the experiment can be changed (default x for left and m for right button).</span><br>
+    </span></p>
+  </li>
+  <li>
+    <p><span style="font-weight: bold;">Present feedback</span>: <font style="font-family: Arial;"><font size="3"><span style="font-weight: normal;">(<span style="font-style: italic;">Yes
+</span>	or <span style="font-style: italic;">No</span>). A feedback can be presented depending on the accuracy of users presponse.</span></font></font></p>
+  </li>
+  <ul>
+    <li>
+	<p style="margin-bottom: 0cm; font-weight: normal; line-height: 150%;">
+	<font size="3">If <span style="font-style: italic;">Yes</span>:</font></p>
+	<p style="margin-bottom: 0cm; line-height: 150%;"><font color="#000000"><font size="3"><span style="font-weight: normal;">- <span style="font-weight: bold;">Feedback presentation time</span></span><b>?</b><span style="font-weight: normal;">
+	The number of images can be defined here.</span></font></font></p>
+	
+    <p style="margin-bottom: 0cm;"><font color="#000000"><font size="3"><span style="font-weight: normal;">- <span style="font-weight: bold;">Type of feedback</span></span><b>.</b><span style="font-weight: normal;"> </span><span style="font-style: italic;">Text</span>s or <span style="font-style: italic;">Picture</span>s can be used as Feedback.</font></font></p></li>
+    <ul>
+      <li>
+        <p><font color="#000000"><font size="3">If <span style="font-style: italic;">Texts</span>: Texts and text colours for correct and incorrect responses can be specified</font></font></p>
+      </li>
+      <li>
+        <p><font color="#000000"><font size="3">if <span style="font-style: italic;">Pictures:</span>
+images (e.g. bmp) for correct and incorrect responses can be loaded. In
+this case both images need to have the same size. They will be
+presented in the center of the screen.<br>
+        </font></font></p>
+      </li>
+    </ul>
+  </ul>
+</ul>
+
+
+
+
+
+
+
+<p style="font-family: Arial;"><br>
+<big><span style="font-weight: bold;">Attention mode</span></big></p>
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;">With
+GraLeTaG you can add an attention mode to the learning task in terms of
+presenting a Cue and two stimuli instead of one stimulus.
+To create such kind of experiment, you need to tick the box to activate
+the attention mode. Then additional options appear for the attention
+mode (see figure 3)<br>
+</p>
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;"><img style="width: 660px; height: 247px;" alt="attention GUI" src="Manual_files/gen_gui_only_attention.png"><br>
+</p>
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;">Figure 4: Part of the Generate Learning Task Generator GUI after activating the attention mode.</p>
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;"><br>
+</p>
+<ul style="font-family: Arial;">
+  <li style="font-weight: bold;">
+    <p>Cue</p>
+  </li>
+  <ul>
+    <li>
+      <p><span style="font-weight: bold;">type</span>: As type of Cue
+texts or images can be specified. In case of selecting text, an dialog
+box appears where the Cue texts, cue text colours and cue font size can
+be specified. Additionally, a horizontal shift can be defined to adjust the postion of the cue on the screen.<br>
+      </p>
+    </li>
+    <li>
+      <p><span style="font-weight: bold;">time</span>: The presentation time of the cue can be defined as a <span style="font-style: italic; font-weight: bold;">constant</span> time for all trials of all subjects or as <span style="font-weight: bold; font-style: italic;">random</span> or <span style="font-weight: bold; font-style: italic;">pseudorandom</span>
+timings (pseudorandom = one random order used for each subject, random
+= different random orders for each subject). After the selection a
+dialog box appears to specify the constant time or the range of the
+random/pseudroandom times(in ms). The specified timing will be displayed beside the pulldown menu. <br>
+      </p>
+    </li>
+    <li>
+      <p><span style="font-weight: bold;">order</span>: The order of the cue can be <span style="font-weight: bold; font-style: italic;">random</span> or <span style="font-weight: bold; font-style: italic;">pseudorandom</span>.<br>
+  </p>
+    </li>
+    <li>
+      <p><span style="font-weight: bold;">ratio</span>:
+With the ratio the amount of the used cues can be defined. E.g. a value
+of 30 would mean that 30% off all presented cues are cue 1.<br>
+      </p>
+    </li>
+  </ul>
+</ul>
+<ul style="font-family: Arial; font-weight: bold;">
+  <li>
+    <p>ISI</p>
+  </li>
+</ul>
+<ul style="font-family: Arial;">
+  <ul>
+    <li>
+      <p><span style="font-weight: bold;">time</span>: The presentation time of the ISI between the cue ad the stimuli can be defined as a <span style="font-style: italic; font-weight: bold;">constant</span> time for all trials of all subjects or as <span style="font-weight: bold; font-style: italic;">random</span> or <span style="font-weight: bold; font-style: italic;">pseudorandom</span>
+timings (pseudorandom = one random order used for each subject, random
+= different random orders for each subject). After the selection a
+dialog box appears to specify the constant time or the range of the
+random/pseudroandom times (in ms). The specified timing will be displayed beside the pulldown menu.</p>
+    </li>
+  </ul>
+</ul>
+<ul style="font-family: Arial;">
+  <ul>
+    <li>
+      <p><span style="font-weight: bold;">fixation</span>:&nbsp;Present fixation point in the center of the ISI screen. <span style="font-style: italic;">Yes</span> or <span style="font-style: italic;">No</span>. If yes, and not already specified a dialog appears to specify the size of the fixation point. The
+specified size will be displayed on the GUI (beside the pulldown menu of the ITI ).</p>
+    </li>
+  </ul>
+</ul>
+<ul style="font-family: Arial; font-weight: bold;">
+  <li>
+    <p>Stim</p>
+  </li>
+</ul>
+<ul style="font-family: Arial;">
+  <ul>
+    <li>
+      <p><span style="font-weight: bold;">type</span>: Here tye of the second stimulus (opposite of the attended side) can be defined either as <span style="font-style: italic; font-weight: bold;">0 from rules</span>, <span style="font-weight: bold; font-style: italic;">random</span> or <span style="font-style: italic; font-weight: bold;">mirror</span>. In case of <span style="font-style: italic;">mirror</span> the second stimulus will be a mirrored version of the attended stimulus. In case of <span style="font-style: italic;">0 from rules</span><span style="font-style: italic;">random</span> the type of the second stimulus is randomly chosen from full range of the specified rule used for the attended stumulus.&nbsp;<span style="color: red;"> <br>
+      </span></p>
+      <p> the type of the second stimulus is randomly chosen from the areas with 0 in the rules. In case of </p>
+    </li>
+  </ul>
+</ul>
+<ul style="font-family: Arial;">
+  <ul>
+    <li>
+      <p><span style="font-weight: bold;">Define Stim positions</span>:
+Here the the positions of the two stimuli can be defined (horizontal
+(x) and vertical (y) shift related to the centre of the screen.). Specified values will be presented below the button.<span style="color: red;"></span></p>
+    </li>
+  </ul>
+</ul>
+<ul style="font-family: Arial;">
+  <ul>
+    <li>
+      <p><span style="font-weight: bold;">fixation</span>: Present fixation point in the center between the two stimuli. <span style="font-style: italic;">Yes</span> or <span style="font-style: italic;">No</span>. If yes, and not already specified a dialog appears to specify the size of the fixation point. The
+specified size will be displayed on the GUI (beside the pulldown menu of the ITI ).</p>
+    </li>
+  </ul>
+  <li>
+    <p><span style="font-weight: bold;">Generate Gradient Learning Task</span></p>
+  </li>
+  <ul>
+    <li>
+      <p>By
+pressing this button GraLeTag generates all stimuli and images a 5x5 of
+these stimuli - a representing range of combination of the defined
+wavelengths and rotations of the gratings.<span style="color: red;"> If
+the red colour (uncertainty area) was used in at least one of the
+rules, the user will be asked how many consecutive trials NOT WORKING
+YET</span>.<span style="font-weight: bold;"> <br>
+      </span></p>
+    </li>
+  </ul>
+</ul>
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;"><br>
+</p>
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;">
+</p>
+<h2 style="font-family: Arial;"><a class="mozTocH2" name="mozTocId810608"></a><small>6.2
+Output files</small></h2>
+
+
+<p style="margin-bottom: 0cm; font-weight: normal; line-height: 150%; font-family: Arial;">
+<font size="3">The GraLeTaG creates one main output file. A Matlab .mat file
+containing a Matlab structure with all parameters needed to run the
+experiment. This file name is dependent on the NameOfExperiment that
+you defined in the first input (e.g. NameOfExperiment_parameter.mat).
+This file will be loaded whe using <span style="font-style: italic; font-weight: bold;">Run Gradient Learning Task</span>.</font></p>
+
+<p style="margin-bottom: 0cm; font-weight: normal; line-height: 150%; font-family: Arial;">
+<font size="3">If you use output
+triggers another output file will be created: a .txt file containing
+the description of the Marker (e.g. NameOfExperiment_Marker.txt).
+This file is only an information for the user and will maybe
+necessary for a later analysis of the data collected with the
+triggered device (e.g. EEG).</font></p>
+<p style="margin-bottom: 0cm; font-weight: normal; line-height: 150%; font-family: Arial;"><font size="3"><br>
+</font></p>
+
+
+<h1><a class="mozTocH1" name="mozTocId780245"></a><a name="head7"></a><small><span style="font-family: Arial;">7. Run Gradient Learning Task</span></small></h1>
+
+<p style="font-family: Arial;"></p>
+<p style="font-family: Arial;">
+</p>
+<p style="margin-bottom: 0cm; font-weight: normal; line-height: 150%; font-family: Arial;">
+<font color="#000000"><font size="3">With
+the <span style="font-style: italic;">Run Gradient Learning Task</span> you can start a predefined
+experiment created withthe generator.</font></font></p>
+
+<br>
+<h2 style="font-family: Arial;"><a class="mozTocH2" name="mozTocId519345"></a><small>7.1 Input
+parameters</small></h2>
+
+<ul style="font-family: Arial;">
+<li><p style="margin-bottom: 0cm; line-height: 150%;"><font size="3"><b>Select
+	experiment parameter file</b></font><font size="3">:
+	Select the predefined parameter file of the experiment that you want
+	to start.</font></p>
+	</li><li><p style="margin-bottom: 0cm; line-height: 150%;"><font size="3"><b>Subject
+	number</b></font><font size="3">:
+	Select the predefined data of subject n for the experiment you want
+	to run.</font></p>
+	</li><li><p style="margin-bottom: 0cm; line-height: 150%;"><font size="3"><b>Multiple
+	Screen detected</b></font><font size="3">:
+	If you have more than one monitor detached to the PCs on which you
+	want to run the experiment, you can specify on which monitor you
+	want to present the experiment. Usually using value 0 the experiment
+	will be presented on both screens (extended not duplicated!) and the
+	value 1 to n are for the different monitor. But depending on your
+	hardware and software setup this may differ. Therefore, you need to
+	test it in advance on the PC on which you want to run the
+	experiment.</font></p>
+</li>
+</ul>
+<br>
+<p>
+</p>
+<h2 class="western" style="font-style: normal; font-family: Arial;"><a class="mozTocH2" name="mozTocId569504"></a><small><font color="#000000">7.2
+Task description</font></small></h2>
+
+<p style="font-family: Arial;"><span style="color: red;">xxxx</span><span style="color: red;">xxxx</span><span style="color: red;">xxxx</span><span style="color: red;">xxxx</span></p>
+<p style="font-family: Arial;"><span style="color: red;">xxx</span></p>
+<p><span style="color: red;"><br>
+</span></p>
+
+<h2 class="western" style="font-style: normal; font-family: Arial;"><a class="mozTocH2" name="mozTocId252729"></a><small>7.3 Output files</small></h2>
+
+<p style="margin-bottom: 0cm; line-height: 150%; page-break-before: auto;">
+<br>
+</p>
+
+<p style="margin-bottom: 0cm; line-height: 150%; font-family: Arial;"><font size="3">The GraLeTaG saves a text file for each subject
+containing the information the following information (column) of
+each trial (rows):</font></p>
+<br>
+<p style="font-family: Arial;"><span style="font-weight: bold;">RuleNr: </span>Used rule for the trial.</p>
+<p style="font-family: Arial;"><span style="font-weight: bold;">Ruletype:</span><span style="color: red;"> x</span><span style="color: red;">xxxx</span><span style="color: red;">xxxx</span><span style="color: red;">xxxx</span><span style="color: red;">xxx</span> </p>
+<p style="font-family: Arial;"><span style="font-weight: bold;">TrialNr</span><font size="3"><span style="font-weight: bold;">:
+	</span>	The trial number of the experiment</font></p>
+<p style="font-family: Arial;"><span style="font-weight: bold;">Time</span><font size="3"><span style="font-weight: bold;">:</span>
+		Cumulative onset time of the trial in respect of the start f the
+experiment.</font></p>
+<p style="font-family: Arial;"><span style="font-weight: bold;">Cond:</span> Trial condition</p>
+<p style="font-family: Arial;"><span style="font-weight: bold;">ButtonNr:</span> <font size="3">Which button was pressed by the user (1=left)</font></p>
+<p style="font-family: Arial;"><span style="font-weight: bold;">ACC:</span> <font size="3">Was
+the Button press of the participant correct (1) or not (0).</font></p>
+<p style="font-family: Arial;"><span style="font-weight: bold;">RT(ms)</span><font size="3"><span style="font-weight: bold;">:</span>	Reaction
+time (time difference between dot presentation and button press)</font></p>
+<p style="font-family: Arial;"><span style="font-weight: bold;">RollACC:</span> Rolling accuracy depending on the specified rule settings</p>
+<p style="font-family: Arial;"><span style="font-weight: bold;">Crit:</span><span style="color: red;"> xx</span><span style="color: red;">xxxx</span><span style="color: red;">xxxx</span><span style="color: red;">xxxx</span><span style="color: red;">xxxx</span> </p>
+<p style="font-family: Arial;"><span style="font-weight: bold;">tilt:</span> Rotation angle of the gradient stimulus in the attended position</p>
+<p style="font-family: Arial;"><span style="font-weight: bold;">freq:</span> Wavelength of the gradient stimulus in the attended position</p>
+<p style="font-family: Arial;"><span style="font-weight: bold;">ITI:</span> ITI duration</p>
+<p style="font-family: Arial;"><br>
+If attention mode was used:</p>
+<p style="font-family: Arial;"><span style="font-weight: bold;">Cue:</span> Which cue was presented (1) or (2)</p>
+<p style="font-family: Arial;"><span style="font-weight: bold;">ISI:</span> ISI duration</p>
+<p style="font-family: Arial;"><span style="font-weight: bold;">tilt2:</span>  Rotation angle of the second gradient stimulus</p>
+<p style="font-family: Arial;"><span style="font-weight: bold;">freq2:</span> Wavelength of the second gradient stimulus</p>
+<p style="font-family: Arial;"><br>
+</p>
+<p style="font-family: Arial;"><span style="font-family: Arial;">If feedback was used:</span></p>
+<p style="font-family: Arial;"><span style="font-weight: bold; font-family: Arial;">FBISI:</span><span style="font-family: Arial;"> ISI duration between stimuli and feedback</span><br>
+</p>
+<p style="font-family: Arial;"><br>
+</p>
+<p style="font-family: Arial;"><br>
+</p>
+<p style="font-family: Arial;"><br>
+</p>
+<p style="font-family: Arial;"><br>
+</p>
+<p style="font-family: Arial;"><br>
+</p>
+<p style="font-family: Arial;"><br>
+</p>
+<p style="font-family: Arial;"><br>
+</p>
+<p style="font-family: Arial;"><br>
+</p>
+<p style="font-family: Arial;"><br>
+</p>
+<p><br style="font-family: Arial;">
+</p>
+</body></html>
