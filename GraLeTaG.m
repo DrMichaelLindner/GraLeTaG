@@ -3,7 +3,7 @@ function GraLeTaG()
 % This program is distributed in the hope that it will be useful,
 % but WITHOUT ANY WARRANTY;
 %
-% Version 0.98 by Michael Lindner 
+% Version 0.983 by Michael Lindner 
 % University of Reading, 2017
 % Center for Integrative Neuroscience and Neurodynamics
 % https://www.reading.ac.uk/cinn/cinn-home.aspx
@@ -11,7 +11,7 @@ function GraLeTaG()
 % For questions and issues feel free to contact: graletag@gmx.co.uk
 
 
-GraLe_ver=0.982;
+GraLe_ver=0.983;
 
 BackgroundColor=[ 0 0 0];
 % NameColor=[1 .2 0];
@@ -2274,7 +2274,7 @@ uicontrol('Style','text', ...
                 uicontrol('Style','text', ...
                     'HorizontalAlignment','left', ...
                     'Position',[650,upos(end)+20,200,20], ...
-                    'String','Adaptive Leraning criteria per rule:');
+                    'String','Adaptive Learning criteria per rule:');
                 
                 uicontrol('Style','text', ...
                     'HorizontalAlignment','left', ...
@@ -2419,7 +2419,7 @@ uicontrol('Style','text', ...
                 if strcmpi(experiment_parameters.ISIrand, 'random')
                     for subj=1:experiment_parameters.NumberSubjects
                         for iiiix = 1:size(experiment_parameters.rule_order,1)
-                            experiment_parameters.subject{subj,1}.ISI{iiiix,1} = (experiment_parameters.ITIvar(2)-experiment_parameters.ISIvar(1)).*rand(experiment_parameters.rule_order{iiiix,3},1) + experiment_parameters.ISIvar(1);
+                            experiment_parameters.subject{subj,1}.ISI{iiiix,1} = (experiment_parameters.ISIvar(2)-experiment_parameters.ISIvar(1)).*rand(experiment_parameters.rule_order{iiiix,3},1) + experiment_parameters.ISIvar(1);
                         end
                     end
                 else
@@ -2679,9 +2679,9 @@ uicontrol('Style','text', ...
                                 x = experiment_parameters.amode.rule_zeros{ii};
                                 [~,idxa]=sort(rand(length(experiment_parameters.amode.rule_zeros{ii}),1));
                                 X = x(idxa);
-                                while X < experiment_parameters.rule_order{ii,3}
+                                while length(X) < experiment_parameters.rule_order{ii,3}
                                     [~,idxr]=sort(rand(length(experiment_parameters.amode.rule_zeros{ii}),1));
-                                    X = [X, x(idxr)] ;
+                                    X = [X; x(idxr)] ;
                                 end
                                 X = X(1:experiment_parameters.rule_order{ii,3});
         
@@ -2700,9 +2700,9 @@ uicontrol('Style','text', ...
                             x = experiment_parameters.amode.rule_zeros{ii};
                             [~,idxa]=sort(rand(length(experiment_parameters.amode.rule_zeros{ii}),1));
                             X = x(idxa);
-                            while X < experiment_parameters.rule_order{ii,3}
+                            while length(X) < experiment_parameters.rule_order{ii,3}
                                 [~,idxr]=sort(rand(length(experiment_parameters.amode.rule_zeros{ii}),1));
-                                X = [X, x(idxr)] ;
+                                X = [X; x(idxr)] ;
                             end
                             X = X(1:experiment_parameters.rule_order{ii,3});
         
@@ -2911,7 +2911,11 @@ uicontrol('Style','text', ...
                 % -----------------------------------------------
                 fprintf('Save parameter file ')
                 savename=[experiment_parameters.outputpath, filesep, experiment_parameters.NameExperiment,'_parameters.mat'];
-                save(savename,'experiment_parameters');
+                try
+                    save(savename,'experiment_parameters');
+                catch
+                    save(savename,'experiment_parameters','-v7.3');
+                end
                 fprintf(' - done!')
                 
                 
@@ -3099,11 +3103,15 @@ uicontrol('Style','text', ...
         
         
         % get display number to present the experiment
-        MP = get(0, 'MonitorPositions');
-        if size(MP,1)>1
-            answer = inputdlg(['Multiple displays detected! Specify the display number on which you want to present the experiment: (0 to ',num2str(size(MP,1)),')'],'Display number',1,{'0'});
-            dispnum = str2num(answer{1});
-        else
+        try
+            MP = get(0, 'MonitorPositions');
+            if size(MP,1)>1
+                answer = inputdlg(['Multiple displays detected! Specify the display number on which you want to present the experiment: (0 to ',num2str(size(MP,1)),')'],'Display number',1,{'0'});
+                dispnum = str2num(answer{1});
+            else
+                dispnum = 0;
+            end
+        catch
             dispnum = 0;
         end
         
