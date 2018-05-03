@@ -1573,25 +1573,36 @@ uicontrol('Style','text', ...
                     
                     % get and load images
                     [filename, pathname] = uigetfile({'*.png';'*.bmp'}, 'Select image for cue 1:','MultiSelect','off');
-                    f=fullfile(pathname,filename{ii});
+                    f=fullfile(pathname,filename);
                     experiment_parameters.amode.cuepictures{1} = imread(f);
                     
                     [filename, pathname] = uigetfile({'*.png';'*.bmp'}, 'Select image for cue 2:','MultiSelect','off');
-                    f=fullfile(pathname,filename{ii});
+                    f=fullfile(pathname,filename);
                     experiment_parameters.amode.cuepictures{2} = imread(f);
                     
                     if size(experiment_parameters.amode.cuepictures{1},1) == size(experiment_parameters.amode.cuepictures{2},1)
-                        cfg.CueimSizeY = size(experiment_parameters.amode.cuepictures{1},1);
+                        experiment_parameters.CueimSizeY = size(experiment_parameters.amode.cuepictures{1},1);
                     else
                         errordlg('ERROR: Cue images need to have the same size.','Input error')
                         error('ERROR: Cue images need to have the same size.')
                     end
                     if size(experiment_parameters.amode.cuepictures{1},2) == size(experiment_parameters.amode.cuepictures{2},2)
-                        cfg.CueimSizeX = size(experiment_parameters.amode.cuepictures{1},2);
+                        experiment_parameters.CueimSizeX = size(experiment_parameters.amode.cuepictures{1},2);
                     else
                         errordlg('ERROR: Feedback images need to have the same size.','Input error')
                         error('ERROR: Feedback images need to have the same size.')
                     end
+                    
+                    
+                     prompt = {'Horizontal shift',...
+                        'Vertical shift'};
+                    dlg_title = 'Define shifts of cues images';
+                    num_lines = 1;
+                    defaultans = {'0',...
+                        '0'};
+                    cuetext = inputdlg(prompt,dlg_title,num_lines,defaultans);
+                    experiment_parameters.amode.cue_img_horshift = str2num(cuetext{1});
+                    experiment_parameters.amode.cue_img_vertshift = str2num(cuetext{2});
                     
                     set(source, 'ForegroundColor', DoneColor);
                 else
@@ -1758,7 +1769,7 @@ uicontrol('Style','text', ...
                     
                     ft = [ft, '; ',selstr{experiment_parameters.Feedbacktype}];
                     
-                    if strcmpi(selstr{experiment_parameters.Feedbacktype},'Picture')
+                    if experiment_parameters.Feedbacktype == 1 % Pictures
                         % get and load images
                         [filename, pathname] = uigetfile({'*.png';'*.bmp'}, 'Select feedback image for INCORRECT answers:','MultiSelect','off');
                         f=fullfile(pathname,filename);
@@ -1769,20 +1780,20 @@ uicontrol('Style','text', ...
                         experiment_parameters.Feedbackpictures{2} = imread(f);
                         
                         if size(experiment_parameters.Feedbackpictures{1},1) == size(experiment_parameters.Feedbackpictures{2},1)
-                            cfg.FBimSizeY = size(experiment_parameters.Feedbackpictures{1},1);
+                            experiment_parameters.FBimSizeY = size(experiment_parameters.Feedbackpictures{1},1);
                         else
                             errordlg('ERROR: Feedback images need to have the same size.','Input error')
                             error('ERROR: Feedback images need to have the same size.')
                         end
                         if size(experiment_parameters.Feedbackpictures{1},2) == size(experiment_parameters.Feedbackpictures{2},2)
-                            cfg.FBimSizeX = size(experiment_parameters.Feedbackpictures{1},2);
+                            experiment_parameters.FBimSizeX = size(experiment_parameters.Feedbackpictures{1},2);
                         else
                             errordlg('ERROR: Feedback images need to have the same size.','Input error')
                             error('ERROR: Feedback images need to have the same size.')
                         end
                         
                         
-                    elseif strcmpi(selstr{experiment_parameters.Feedbacktype},'Text')
+                    elseif experiment_parameters.Feedbacktype == 2 % text
                         % specify feedback texts
                         prompt = {'Text for INCORRECT answers:',...
                             'Text colour for INCORRECT answers:',...
@@ -3295,7 +3306,7 @@ uicontrol('Style','text', ...
         cfg.y2 = cfg.screen_res(2)/2 - cfg.StimPosShift(2) + cfg.imSize*cfg.stimzoom/2;
         
         
-        if strcmp(experiment_parameters.Feedback, '')
+        if cfg.Feedbacktype == 1
             % feedback positions
             cfg.fpx1 = cfg.screen_res(1)/2 - cfg.StimPosShift(1) - cfg.FBimSizeX*cfg.stimzoom/2;
             cfg.fpy1 = cfg.screen_res(2)/2 - cfg.StimPosShift(2) - cfg.FBimSizeY*cfg.stimzoom/2;
@@ -3311,7 +3322,7 @@ uicontrol('Style','text', ...
         
         % Give the display a moment to recover from the change of display mode when
         
-        if strcmp(experiment_parameters.attentionmode,'yes')
+        if strcmp(cfg.attentionmode,'yes')
             % cue positions 
             if strcmp(cfg.amode.cue_type, 'text')
                 cfg.cuex1 = cfg.screen_res(1)/2 - cfg.amode.cue_horshift;
@@ -3320,10 +3331,10 @@ uicontrol('Style','text', ...
                 cfg.cuey2 = cfg.screen_res(2)/2;
             else
                 
-                cfg.cuex1 = cfg.screen_res(1)/2 - cfg.amode.cue_horshift - cfg.CueimSizeX/2;
-                cfg.cuey1 = cfg.screen_res(2)/2 - cfg.CueimSizeX/2;
-                cfg.cuex2 = cfg.screen_res(1)/2 - cfg.amode.cue_horshift  + cfg.CueimSizeY/2;
-                cfg.cuey2 = cfg.screen_res(2)/2 + cfg.CueimSizeY/2;
+                cfg.cuex1 = cfg.screen_res(1)/2 - cfg.amode.cue_img_horshift - cfg.CueimSizeX/2;
+                cfg.cuey1 = cfg.screen_res(2)/2 - cfg.amode.cue_img_vertshift - cfg.CueimSizeX/2;
+                cfg.cuex2 = cfg.screen_res(1)/2 - cfg.amode.cue_img_horshift + cfg.CueimSizeY/2;
+                cfg.cuey2 = cfg.screen_res(2)/2 - cfg.amode.cue_img_vertshift + cfg.CueimSizeY/2;
             end
         
             % stim positions
@@ -3952,11 +3963,11 @@ uicontrol('Style','text', ...
             % create empty screen
             Screen('FillRect', w, cfg.BackgroundColor);
             
-            if strcmp(cfg.Feedback, '')
+            if cfg.Feedbacktype == 1
                 % present picture
                 t = Screen('MakeTexture',w,cfg.Feedbackpictures{cfg.acc+1});
                 Screen('DrawTexture',w,t,[],[cfg.fpx1(1) cfg.fpy1(1) cfg.fpx2(1) cfg.fpy2(1)]);
-            else
+            elseif cfg.Feedbacktype == 2
                 % present text
                 Screen('TextFont', w, cfg.feedback_font);
                 Screen('TextSize', w, cfg.feedback_font_size);
