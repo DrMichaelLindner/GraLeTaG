@@ -1,7 +1,7 @@
 
 # ![Alt text](GraLeTaG_Logo.png?raw=true "Title")
 
-#   GraLeTaG   !beta-test Version!
+#   GraLeTaG   ! beta-test version !
 Gradient Learning Task Generator
 
 
